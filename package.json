@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Text-to-image-CLA",
   "main": "./bin/index.js",
+  "type": "module",
   "bin": {
     "tts": "bin/index.js"
   },
@@ -15,5 +16,8 @@
     "cla"
   ],
   "author": "Yashwanth B M",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cli-progress": "^3.12.0"
+  }
 }

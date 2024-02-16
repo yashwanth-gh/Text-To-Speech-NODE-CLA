@@ -1,0 +1,19 @@
+{
+  "name": "text-to-speech-cli-application",
+  "version": "1.0.0",
+  "description": "Text-to-image-CLA",
+  "main": "./bin/index.js",
+  "bin": {
+    "tts": "bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "js",
+    "node",
+    "cla"
+  ],
+  "author": "Yashwanth B M",
+  "license": "ISC"
+}

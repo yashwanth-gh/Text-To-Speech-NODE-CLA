@@ -2,8 +2,8 @@
 
 import fs from "fs";
 import * as readline from "readline";
-import cliProgress from "cli-progress";
 import path from "path";
+import cliProgress from "cli-progress";
 
 const dataFolderPath = path.join(
   "C:",
@@ -13,24 +13,23 @@ const dataFolderPath = path.join(
   "Text-to-speech-CLA-data"
 );
 
+
 console.log(`
-88888888888                888         888                        d8888               888 d8b          
-    888                    888         888                       d88888               888 Y8P          
-    888                    888         888                      d88P888               888              
-    888   .d88b.  888  888 888888      888888 .d88b.           d88P 888 888  888  .d88888 888  .d88b.  
-    888  d8P  Y8b 'Y8bd8P' 888         888   d88""88b         d88P  888 888  888 d88" 888 888 d88""88b 
-    888  88888888   X88K   888         888   888  888        d88P   888 888  888 888  888 888 888  888 
-    888  Y8b.     .d8""8b. Y88b.       Y88b. Y88..88P       d8888888888 Y88b 888 Y88b 888 888 Y88..88P 
-    888   "Y8888  888  888  "Y888       "Y888 "Y88P"       d88P     888  "Y88888  "Y88888 888  "Y88P"  
-                                                                                                       
-                                                                                                       
-`);
+████████╗███████╗██╗  ██╗████████╗    ████████╗ ██████╗     ███████╗██████╗ ███████╗███████╗ ██████╗██╗  ██╗
+╚══██╔══╝██╔════╝╚██╗██╔╝╚══██╔══╝    ╚══██╔══╝██╔═══██╗    ██╔════╝██╔══██╗██╔════╝██╔════╝██╔════╝██║  ██║
+   ██║   █████╗   ╚███╔╝    ██║          ██║   ██║   ██║    ███████╗██████╔╝█████╗  █████╗  ██║     ███████║
+   ██║   ██╔══╝   ██╔██╗    ██║          ██║   ██║   ██║    ╚════██║██╔═══╝ ██╔══╝  ██╔══╝  ██║     ██╔══██║
+   ██║   ███████╗██╔╝ ██╗   ██║          ██║   ╚██████╔╝    ███████║██║     ███████╗███████╗╚██████╗██║  ██║
+   ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚═╝          ╚═╝    ╚═════╝     ╚══════╝╚═╝     ╚══════╝╚══════╝ ╚═════╝╚═╝  ╚═╝
+                                                                                                            
+`)
 
 try {
   fs.unlinkSync(path.join(dataFolderPath, "audio.mp3"));
 } catch (err) {
   console.log(":)");
 }
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -63,8 +62,11 @@ let chooseOption;
 let inputText = "";
 await getUserChoice();
 
-if (inputText) {
+if (inputText.length>0) {
   console.log("\n Converting Text to Speech !\n");
+}else{
+  console.log("\n Invalid Input !\n");
+  process.exit(1);
 }
 
 const requestHuggingFace = async (data) => {
@@ -73,7 +75,7 @@ const requestHuggingFace = async (data) => {
       "https://api-inference.huggingface.co/models/facebook/mms-tts-eng",
       {
         headers: {
-          Authorization: "Bearer <Your Token>",
+          Authorization: "Bearer <Your_Access_Token>",
         },
         method: "POST",
         body: JSON.stringify(data),
